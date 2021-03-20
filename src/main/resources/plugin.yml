@@ -1,0 +1,5 @@
+name: Emotes
+version: @version@
+main: io.alerium.emotes.EmotesPlugin
+api-version: 1.16
+author: Frcsty
