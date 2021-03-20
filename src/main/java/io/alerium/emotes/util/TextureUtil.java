@@ -3,6 +3,7 @@ package io.alerium.emotes.util;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import io.alerium.emotes.util.nbt.ItemNBT;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -12,11 +13,20 @@ import java.util.UUID;
 
 public final class TextureUtil {
 
-    public static ItemStack getTexturedHead(final String texture) {
+    public static ItemStack getTexturedHead(final String textureString) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         final SkullMeta skullMeta = (SkullMeta) item.getItemMeta();
 
-        item.setItemMeta(getTexturedMeta(skullMeta, texture));
+        final TextureType type = TextureType.valueOf(textureString.split(":")[0]);
+        final String texture = textureString.split(":")[1];
+
+        switch (type) {
+            case NAME -> skullMeta.setOwner(texture);
+            case UUID -> skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString(texture)));
+            case BASE -> item.setItemMeta(getTexturedMeta(skullMeta, texture));
+        }
+
+        item.setItemMeta(skullMeta);
         item = ItemNBT.setNBTTag(item, "emote-item", "emote-item");
 
         return item;
@@ -36,6 +46,12 @@ public final class TextureUtil {
         }
 
         return skullMeta;
+    }
+
+    private enum TextureType {
+
+        NAME, UUID, BASE
+
     }
 
 }
