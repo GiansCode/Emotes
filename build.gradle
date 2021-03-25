@@ -26,7 +26,6 @@ dependencies {
 
 shadowJar {
 	minimize()
-
 	relocate "me.mattstudios.mf", "${project.group}.emotes.library.mf"
 
 	archiveFileName.set("Emotes-${project.version}.jar")
@@ -37,3 +36,10 @@ processResources {
 		filter ReplaceTokens, tokens: [version: version]
 	}
 }
+
+def version = JavaVersion.VERSION_1_8
+
+sourceCompatibility = version
+targetCompatibility = version
+
+jar.finalizedBy(shadowJar)

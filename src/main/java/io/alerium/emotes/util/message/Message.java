@@ -13,10 +13,18 @@ public final class Message {
         if (text.isEmpty()) return;
 
         switch (type) {
-            case CHAT -> text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendMessage(player));
-            case ACTION_BAR -> text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendActionBar(player, 2, 5, 2));
-            case TITLE -> text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendTitle(player, 2, 5, 2));
-            case SUBTITLE -> text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendSubTitle(player, 2, 5, 2));
+            case CHAT:
+                text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendMessage(player));
+                break;
+            case ACTION_BAR:
+                text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendActionBar(player, 2, 5, 2));
+                break;
+            case TITLE:
+                text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendTitle(player, 2, 5, 2));
+                break;
+            case SUBTITLE:
+                text.forEach(it -> BUKKIT_MESSAGE.parse(it).sendSubTitle(player, 2, 5, 2));
+                break;
         }
     }
 

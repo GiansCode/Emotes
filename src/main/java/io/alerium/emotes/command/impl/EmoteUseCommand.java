@@ -40,7 +40,7 @@ public final class EmoteUseCommand extends CommandBase {
 
         final Player target;
         switch (arguments.length) {
-            case 1 -> {
+            case 1:
                 if (!player.hasPermission("emotes.commands.emote." + emote.getIdentifier())) {
                     Message.send(
                             player,
@@ -50,8 +50,8 @@ public final class EmoteUseCommand extends CommandBase {
                     return;
                 }
                 target = player;
-            }
-            case 2 -> {
+                break;
+            case 2:
                 if (!player.hasPermission("emotes.commands.emotes.others")) {
                     Message.send(
                             player,
@@ -62,8 +62,9 @@ public final class EmoteUseCommand extends CommandBase {
                 }
 
                 target = Bukkit.getPlayer(arguments[1]);
-            }
-            default -> target = player;
+                break;
+            default:
+                target = player;
         }
 
         if (target == null) {

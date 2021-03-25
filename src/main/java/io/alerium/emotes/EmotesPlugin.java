@@ -47,7 +47,7 @@ public final class EmotesPlugin extends JavaPlugin {
                 .map(it -> (EmoteRegisterable) it)
                 .findFirst();
 
-        if (result.isEmpty())
+        if (!result.isPresent())
             throw new RuntimeException("Failed to retrieve EmoteRegisterable!");
 
         return result.get();

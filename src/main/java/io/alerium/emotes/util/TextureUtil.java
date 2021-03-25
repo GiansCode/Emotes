@@ -21,9 +21,15 @@ public final class TextureUtil {
         final String texture = textureString.split(":")[1];
 
         switch (type) {
-            case NAME -> skullMeta.setOwner(texture);
-            case UUID -> skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString(texture)));
-            case BASE -> item.setItemMeta(getTexturedMeta(skullMeta, texture));
+            case NAME:
+                skullMeta.setOwner(texture);
+                break;
+            case UUID:
+                skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(UUID.fromString(texture)));
+                break;
+            case BASE:
+                item.setItemMeta(getTexturedMeta(skullMeta, texture));
+                break;
         }
 
         item.setItemMeta(skullMeta);
