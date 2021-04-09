@@ -1,4 +1,4 @@
-package io.alerium.emotes.listener;
+package io.alerium.emotes.listener.impl;
 
 import io.alerium.emotes.EmotesPlugin;
 import io.alerium.emotes.util.nbt.ItemNBT;

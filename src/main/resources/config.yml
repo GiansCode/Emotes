@@ -18,6 +18,10 @@ emotes:
 
 cooldown: "1m"
 
+settings:
+  blacklisted-commands:
+    - "/hat"
+
 message:
   type: CHAT # ACTION_BAR, TITLE, SUBTITLE
   help-command: [
@@ -41,4 +45,7 @@ message:
   ]
   missing-permission: [
     "&9| &cYou do not have permission to use this emote!"
+  ]
+  blacklisted-commands-restriction: [
+    "&9| &cYou may not use this command while using an emote."
   ]

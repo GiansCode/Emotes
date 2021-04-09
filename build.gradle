@@ -5,8 +5,8 @@ plugins {
 	id "java"
 }
 
-group = "io.alerium"
-version = "0.0.2-Alpha"
+group = "io.alerium.emotes"
+version = "0.0.3-Alpha"
 
 repositories {
 	mavenCentral()
